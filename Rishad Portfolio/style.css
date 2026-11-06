@@ -1,0 +1,824 @@
+/* These variables keep the portfolio's colors and spacing consistent. */
+:root {
+  --page-bg: #F8F9FC;
+  --primary: #172554;
+  --accent: #7357F6;
+  --text: #333B4F;
+  --muted: #687187;
+  --white: #FFFFFF;
+  --line: #E7E9F1;
+  --soft-accent: #F0EDFF;
+  --shadow: 0 18px 50px rgba(23, 37, 84, 0.09);
+}
+
+/* box-sizing makes width calculations predictable when padding and borders are added. */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--text);
+  font-family: "Poppins", sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.section-space {
+  padding: 104px 0;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(248, 249, 252, 0.96);
+  border-bottom: 1px solid rgba(231, 233, 241, 0.8);
+  backdrop-filter: blur(12px);
+}
+
+/* Bootstrap handles the collapsing menu; Flexbox aligns the brand and menu links. */
+.navbar {
+  min-height: 76px;
+  padding: 12px 0;
+}
+
+.brand {
+  color: var(--primary);
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.07em;
+}
+
+.brand span {
+  color: var(--accent);
+}
+
+.navbar-nav {
+  gap: 12px;
+}
+
+.nav-link {
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 180ms ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--accent);
+}
+
+.nav-contact {
+  margin-left: 10px;
+  padding: 10px 20px !important;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.navbar-toggler {
+  border-color: var(--line);
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 3px rgba(115, 87, 246, 0.18);
+}
+
+/* Flexbox gives the hero room to wrap into one column on smaller screens. */
+.hero {
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  padding-top: 84px;
+  padding-bottom: 92px;
+  overflow: hidden;
+}
+
+.hero-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 72px;
+}
+
+.hero-copy {
+  flex: 1 1 52%;
+  max-width: 610px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+
+.eyebrow-line {
+  width: 25px;
+  height: 2px;
+  background: var(--accent);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+.hero h1 {
+  max-width: 650px;
+  margin-bottom: 22px;
+  color: var(--primary);
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1.16;
+}
+
+.hero-description,
+.body-copy {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.hero-description {
+  max-width: 540px;
+  margin-bottom: 28px;
+}
+
+/* A wrapping flex row keeps the two hero buttons comfortable on narrow screens. */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 13px;
+}
+
+.button-primary,
+.button-outline {
+  min-height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.button-primary {
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--white);
+}
+
+.button-primary:hover,
+.button-primary:focus {
+  transform: translateY(-2px);
+  background: #6044e6;
+  color: var(--white);
+  box-shadow: 0 9px 22px rgba(115, 87, 246, 0.22);
+}
+
+.button-outline {
+  border: 1px solid #D9DCE7;
+  background: transparent;
+  color: var(--primary);
+}
+
+.button-outline:hover,
+.button-outline:focus {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.hero-note {
+  margin: 25px 0 0;
+  color: #858CA0;
+  font-size: 0.78rem;
+}
+
+/* Positioning lets the experience badge overlap the portrait without affecting layout. */
+.hero-visual {
+  position: relative;
+  flex: 0 1 43%;
+  max-width: 460px;
+  margin-right: 22px;
+}
+
+.portrait-frame {
+  height: 470px;
+  overflow: hidden;
+  border: 10px solid var(--white);
+  border-radius: 180px 180px 22px 22px;
+  background: #E7E3FF;
+  box-shadow: var(--shadow);
+}
+
+.portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.experience-badge {
+  position: absolute;
+  right: -34px;
+  bottom: 42px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.experience-badge strong {
+  color: var(--accent);
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.experience-badge span {
+  color: var(--text);
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
+.hero-dot {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E9E4FF, #D9D2FF);
+}
+
+.hero-dot-one {
+  top: 24px;
+  right: -52px;
+  width: 100px;
+  height: 100px;
+}
+
+.hero-dot-two {
+  bottom: 5px;
+  left: -38px;
+  width: 68px;
+  height: 68px;
+}
+
+.about {
+  background: var(--white);
+}
+
+.section-title {
+  margin-bottom: 18px;
+  color: var(--primary);
+  font-size: clamp(1.9rem, 3vw, 2.65rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1.25;
+}
+
+.about .body-copy {
+  max-width: 500px;
+  margin-bottom: 24px;
+}
+
+.text-link,
+.project-link {
+  color: var(--accent);
+  font-size: 0.87rem;
+  font-weight: 600;
+}
+
+.text-link span,
+.project-link span {
+  display: inline-block;
+  margin-left: 5px;
+  transition: transform 180ms ease;
+}
+
+.text-link:hover span,
+.project-link:hover span {
+  transform: translateX(4px);
+}
+
+.about-card {
+  padding: 34px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--page-bg);
+}
+
+.about-card h3 {
+  margin-bottom: 22px;
+  color: var(--primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.about-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.list-check {
+  display: inline-flex;
+  width: 23px;
+  height: 23px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--soft-accent);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.section-heading {
+  max-width: 670px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.section-heading .eyebrow {
+  justify-content: center;
+}
+
+.section-heading .body-copy {
+  margin-bottom: 0;
+}
+
+/* auto-fit and minmax make grid columns resize and wrap without special device-specific widths. */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: 14px;
+}
+
+.skill-item {
+  min-height: 82px;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 175px;
+  align-items: center;
+  gap: 13px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--primary);
+  font-size: 0.87rem;
+  font-weight: 500;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-3px);
+  border-color: #CFC5FF;
+  box-shadow: 0 10px 24px rgba(23, 37, 84, 0.06);
+}
+
+.skill-mark {
+  min-width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: var(--soft-accent);
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.projects {
+  background: var(--white);
+}
+
+.section-heading-row {
+  max-width: none;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  text-align: left;
+}
+
+.section-heading-row .eyebrow {
+  justify-content: flex-start;
+}
+
+.section-heading-row .body-copy {
+  max-width: 330px;
+  margin-bottom: 20px;
+}
+
+/* CSS Grid gives all project cards a consistent responsive gallery layout. */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+  grid-template-rows: 1fr;
+  gap: 24px;
+}
+
+.project-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: var(--white);
+  box-shadow: 0 8px 26px rgba(23, 37, 84, 0.04);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+.project-image {
+  width: 100%;
+  height: 218px;
+  object-fit: cover;
+}
+
+/* Flexbox makes every project link sit at the bottom of its card. */
+.project-content {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+}
+
+.project-type {
+  margin-bottom: 9px;
+  color: var(--accent);
+  font-size: 0.67rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.project-content .card-title {
+  margin-bottom: 10px;
+  color: var(--primary);
+  font-size: 1.12rem;
+  font-weight: 600;
+}
+
+.project-content .card-text {
+  margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.project-link {
+  margin-top: auto;
+}
+
+.contact {
+  background: linear-gradient(135deg, #F8F9FC 0%, #F2F0FF 100%);
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: 80px;
+}
+
+.contact-copy .body-copy {
+  max-width: 390px;
+  margin-bottom: 24px;
+}
+
+.contact-email {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Flexbox lets fields share a row when there is room and wrap when there is not. */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  padding: 30px;
+  border: 1px solid rgba(231, 233, 241, 0.8);
+  border-radius: 14px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.form-field {
+  min-width: 0;
+  flex: 1 1 220px;
+}
+
+.form-label {
+  margin-bottom: 7px;
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.form-control {
+  min-height: 47px;
+  border-color: #E1E4ED;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 0.82rem;
+}
+
+.form-control:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(115, 87, 246, 0.12);
+}
+
+.form-control::placeholder {
+  color: #A0A6B5;
+}
+
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submit-button {
+  align-self: flex-start;
+  margin-top: 2px;
+}
+
+.form-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.form-status.is-success {
+  color: #26764B;
+}
+
+.form-status.is-error {
+  color: #B42318;
+}
+
+.site-footer {
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+  background: var(--white);
+}
+
+/* A wrapping footer row stays readable on phones instead of overflowing. */
+.footer-layout,
+.footer-actions,
+.social-links {
+  display: flex;
+  align-items: center;
+}
+
+.footer-layout {
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-brand {
+  flex: 0 0 auto;
+  font-size: 1.35rem;
+}
+
+.copyright {
+  flex-grow: 1;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.74rem;
+  text-align: center;
+}
+
+.footer-actions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.social-links {
+  gap: 15px;
+}
+
+.social-links a,
+.back-to-top {
+  color: var(--text);
+  font-size: 0.75rem;
+  transition: color 180ms ease;
+}
+
+.social-links a:hover,
+.back-to-top:hover {
+  color: var(--accent);
+}
+
+/* Tablet and phone adjustments preserve breathing room and avoid horizontal scrolling. */
+@media (max-width: 991.98px) {
+  .section-space {
+    padding: 82px 0;
+  }
+
+  .navbar-collapse {
+    padding-top: 14px;
+  }
+
+  .navbar-nav {
+    align-items: stretch !important;
+    gap: 2px;
+  }
+
+  .nav-contact {
+    display: inline-block;
+    width: fit-content;
+    margin: 7px 0 0;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-layout {
+    gap: 36px;
+  }
+
+  .hero-visual {
+    flex-basis: 40%;
+    margin-right: 12px;
+  }
+
+  .portrait-frame {
+    height: 390px;
+  }
+
+  .experience-badge {
+    right: -20px;
+  }
+
+  .contact-layout {
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+    gap: 38px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .section-space {
+    padding: 70px 0;
+  }
+
+  .hero {
+    padding-top: 60px;
+  }
+
+  .hero-layout {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 44px;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+  }
+
+  .hero-visual {
+    width: min(100% - 24px, 420px);
+    flex-basis: auto;
+    align-self: center;
+    margin-right: 12px;
+  }
+
+  .portrait-frame {
+    height: min(105vw, 440px);
+    min-height: 320px;
+  }
+
+  .section-heading-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 32px;
+  }
+
+  .section-heading-row .body-copy {
+    margin: 0;
+  }
+
+  .project-content {
+    min-height: 230px;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-layout {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .copyright {
+    flex: 1 1 100%;
+    order: 3;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .section-space {
+    padding: 58px 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.3rem, 11vw, 3.2rem);
+  }
+
+  .about-card,
+  .contact-form {
+    padding: 22px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .skill-item {
+    min-height: 72px;
+    flex-basis: 0;
+    gap: 9px;
+    padding: 11px;
+    font-size: 0.76rem;
+  }
+
+  .skill-mark {
+    min-width: 32px;
+    height: 32px;
+    font-size: 0.68rem;
+  }
+
+  .project-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .footer-actions {
+    justify-content: center;
+  }
+}
+
+/* Honor the visitor's device setting to reduce motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
